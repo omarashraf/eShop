@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Simple Registration/Login code in PHP
 
 Read more:[PHP registration form](http://www.html-form-guide.com/php-form/php-registration-form.html) [PHP login form](http://www.html-form-guide.com/php-form/php-login-form.html)
@@ -53,3 +54,4 @@ If you want to edit the email message or make changes to the logic, edit this fi
 ## License
 This program is free software published under the terms of the GNU [Lesser General Public License](http://www.gnu.org/copyleft/lesser.html).
 You can freely use it on commercial or non-commercial websites. 
+
