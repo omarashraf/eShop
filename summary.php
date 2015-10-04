@@ -45,7 +45,14 @@
       if ($_GET) {
         $product = getProduct($_GET['id']);
         echo "<b>Name: </b>" . $product['pName'] . "<br>";
-        echo "<b>Category: </b>" . $product['catId'] . "<br>";
+
+        $select_cat_sql = "SELECT * FROM categories WHERE id = '" . $product['catId'] . "'";
+    		$res = mysql_query($select_cat_sql);
+        $cat = mysql_fetch_assoc($res);
+
+        echo "<b>Category: </b>" . $cat['catName'] . "<br>";
+
+
         //echo $product['photo'] . "<br>";
         echo "<b>Price: </b>$" . $product['price'] . "<br>";
         echo "<b>Rating: </b>" . $product['rating'] . "<br>";
