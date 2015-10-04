@@ -54,7 +54,8 @@
 			'name' => array(),
 			'price' => array(),
 			'stock' => array(),
-			'cat' => array()
+			'cat' => array(),
+			'id' => array()
 		);
 
 		if ($res)
@@ -70,9 +71,25 @@
 				array_push($data_array['price'], $temp['price']);
 				array_push($data_array['stock'], $temp['stock']);
 				array_push($data_array['cat'], $temp['catId']);
+				array_push($data_array['id'], $temp['id']);
+
 			}
 		}
 		return $data_array;
+	}
+
+	function getProduct($id) {
+		$fetch_sql = "SELECT * FROM products WHERE id = '" . $id . "'";
+		$res = mysql_query($fetch_sql);
+		$product = array();
+
+		if ($res) {
+			$product = mysql_fetch_assoc($res);
+		}
+		else {
+			die ("Error");
+		}
+		return $product;
 	}
 
 	function fetchUserData($email) {

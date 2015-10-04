@@ -11,9 +11,6 @@
   <script src="js/vendor/placeholder.js"></script>
   <script src="js/vendor/fastclick.js"></script>
   <script src="js/foundation.min.js"></script>
-  <script>
-  $(document).foundation();
-  </script>
 
   <title>Products</title>
 </head>
@@ -24,15 +21,15 @@
     <nav style="color: white;" class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
       <ul class="inline-list" style="margin-top: 10px;">
         <li style="padding-right: 60px;"><a style="color: white;" href="#">eShop</a></li>
-        <li style="padding-right: 20px;"><a href="#">Home</a></li>
-        <li style="padding-right: 20px;"><a href="#">Products</a></li>
+        <li style="padding-right: 20px;"><a href="#
+          ">Home</a></li>
+        <li style="padding-right: 20px;"><a href="productshome.php">Products</a></li>
         <li style="padding-right: 20px;"><a href="#">Profile</a></li>
         <li style="margin-top: -7.5px; font-size: 26px;"><a href="#"><i class="fi-shopping-cart"></i></a></li>
       </ul>
     </nav>
   </div>
   <br>
-
 
 <!-- Left nav -->
   <!-- Categories -->
@@ -71,7 +68,8 @@
         'name' => array(),
         'price' => array(),
         'stock' => array(),
-        'cat' => array()
+        'cat' => array(),
+        'id' => array()
       );
       $array = products();
 
@@ -80,14 +78,14 @@
       while ($i < sizeof($array['name'])) {
         if ($_GET){
           if ($array['cat'][$i] == $_GET['cat']) {
-            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"#\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
           }
           elseif ($_GET['cat'] == 0) {
-            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"#\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
           }
         }
         else {
-          echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"#\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+          echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
         }
         $i++;
       }
@@ -110,6 +108,10 @@
       </ul>
     </div>
   </div>
+
+  <script>
+    $(document).foundation();
+  </script>
 
 </body>
 </html>
