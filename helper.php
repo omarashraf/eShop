@@ -106,7 +106,6 @@
 		return $product;
 	}
 
-<<<<<<< HEAD
 	function getHistory($id) {
 		$fetch_sql = "SELECT * FROM history WHERE userId = '" . $id . "'";
 		$res = mysql_query($fetch_sql);
@@ -123,10 +122,6 @@
 
 	function fetchUserData($email) {
 		$fetch_sql = "SELECT * FROM users WHERE email = '" . $email . "'";
-=======
-	function fetchUserData($id) {
-		$fetch_sql = "SELECT * FROM users WHERE id = '" . $id . "'";
->>>>>>> dd8a0b5fb46fd5b83c81bc3e74afa1d673566096
 		$res = mysql_query($fetch_sql);
 		$data_array = array();
 		if (mysql_num_rows($res) > 0) {
