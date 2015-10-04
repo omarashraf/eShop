@@ -3,5 +3,5 @@
 	if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
 		session_destroy();	
 	}
-	header('Location: homepage.php');
+	header('Location: productshome.php');
 ?>

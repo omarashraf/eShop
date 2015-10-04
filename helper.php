@@ -8,7 +8,6 @@
 	//$users_password_arr = array();
 
 
-	//
 	function login($g_email, $g_password) {
 		$select_users_sql = "SELECT * FROM users";
 		$res = mysql_query($select_users_sql);
@@ -107,6 +106,7 @@
 		return $product;
 	}
 
+<<<<<<< HEAD
 	function getHistory($id) {
 		$fetch_sql = "SELECT * FROM history WHERE userId = '" . $id . "'";
 		$res = mysql_query($fetch_sql);
@@ -123,6 +123,10 @@
 
 	function fetchUserData($email) {
 		$fetch_sql = "SELECT * FROM users WHERE email = '" . $email . "'";
+=======
+	function fetchUserData($id) {
+		$fetch_sql = "SELECT * FROM users WHERE id = '" . $id . "'";
+>>>>>>> dd8a0b5fb46fd5b83c81bc3e74afa1d673566096
 		$res = mysql_query($fetch_sql);
 		$data_array = array();
 		if (mysql_num_rows($res) > 0) {
@@ -146,11 +150,38 @@
 		return $data_array;
 	}
 
+	function validFname($fname) {
+		if (strlen($fname) == 0 || (!strpos($fname, ' ') && trim($fname))) {
+			return true;
+		}
+		return false;
+	}
+
+	function validLname($lname) {
+		if (strlen($lname) == 0 || (!strpos($lname, ' ') && trim($lname))) {
+			return true;
+		}
+		return false;
+	}
+
 	function validEmail($email) {
 		if (strpos($email, '@') && !strpos($email, ' ') && trim($email)) {
 			return true;
 		}
 		else {
+			return false;
+		}
+	}
+
+	function dupEmail($email) {
+		$select_users_sql = "SELECT * FROM users";
+		$res = mysql_query($select_users_sql);
+		if (mysql_num_rows($res) > 0) {
+			while ($temp = mysql_fetch_assoc($res)) {
+				if ($email == $temp['email']) {
+					return true;
+				}
+			}
 			return false;
 		}
 	}
@@ -177,7 +208,7 @@
 		}
 	}
 
-	function validatePasswords($old, $new, $confirmed) {
+	/*function validatePasswords($old, $new, $confirmed) {
 		if (strlen($old) == 0 && strlen($new) == 0 && strlen($confirmed) == 0) {
 			return true;
 		}
@@ -192,6 +223,8 @@
 		else {
 			return false;
 		}
-	}
+	}*/
 
-	?>
+
+?>
+

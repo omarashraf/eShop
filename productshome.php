@@ -47,6 +47,35 @@
               <li><a href="#">Logout</a></li>
             </ul>
         </li>
+        <!--<li style="padding-right: 20px;"><a href="#">Profile</a></li>-->
+        <li style="margin-top: -7.5px; font-size: 26px;"><a href="cart.php"><i class="fi-shopping-cart"></i></a></li>
+        <?php
+            include('helper.php');
+            session_start();
+            if (isset($_SESSION['loggedin'])) {
+              $select_users_sql = "SELECT * FROM users WHERE id = '" . $_SESSION['loggedin'] . "'";
+              $res = mysql_query($select_users_sql);
+              if (mysql_num_rows($res)) {
+                while ($temp = mysql_fetch_assoc($res)) {
+                  if ($temp['id'] == $_SESSION['loggedin']) {
+                    $current_user = $temp['first_name'];
+                  }
+                }
+              }
+              else {
+                die (mysql_error());
+              }
+              echo '<li style="margin-top: -11px; float: right;">
+                      <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">' . $current_user . '</button><br>
+                        <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
+                          <li><a href="editProfile.php">Edit Profile</a></li>
+                          <li><a href="changePassword.php">Change Password</a></li>
+                          <li><a href="cart.php">My Cart</a></li>
+                          <li><a href="logout.php">Logout</a></li>
+                        </ul>
+                    </li>';
+            }
+        ?>
       </ul>
     </nav>
   </div>
@@ -56,6 +85,7 @@
   <!-- Categories -->
   <div style="background: #f2f2f2;" class="small-3 columns">Categories
     <?php
+      //include('helper.php');
       $array = array(
         'name' => array(),
         'id' => array()
@@ -76,10 +106,21 @@
   <div style="margin-left: 40px;" class="small-8 columns">
 
   <!-- Search -->
-    <a href="#" style="border-radius: 25px;" class="button tiny success left inline">Search <i class="fi-magnifying-glass"></i></a>
+    <!--<a href="#" style="border-radius: 25px;" class="button tiny success left inline">Search <i class="fi-magnifying-glass"></i></a>
     <div class="large-10 columns">
       <input style="border-radius: 25px; height: 33px;" type="text" />
-    </div>
+    </div>-->
+
+  <!--Login/register buttons-->
+  <?php
+      if(!isset($_SESSION['loggedin'])) {
+          echo '<div style="margin-left: 950px;">
+                  <a href="login.php" class="button success">Login</a>
+                  <a href="register.php" class="button">Register</a>
+                </div>';
+      }
+  ?>
+  
 
   <!-- Blocks -->
     <?php
