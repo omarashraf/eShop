@@ -120,8 +120,8 @@
 		return $history;
 	}
 
-	function fetchUserData($email) {
-		$fetch_sql = "SELECT * FROM users WHERE email = '" . $email . "'";
+	function fetchUserData($id) {
+		$fetch_sql = "SELECT * FROM users WHERE id = '" . $id . "'";
 		$res = mysql_query($fetch_sql);
 		$data_array = array();
 		if (mysql_num_rows($res) > 0) {
