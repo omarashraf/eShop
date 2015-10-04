@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/normalize.css">
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="js/vendor/placeholder.js"></script>
+  <script src="js/vendor/fastclick.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+  $(document).foundation();
+  </script>
+
+  <title>Regsiter</title>
+</head>
+
+<body style="background: #f2f2f2;">
+  <form>
+    <!-- First and Last names -->
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="fName" class="right inline">First Name</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="fName">
+          </div>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="lName" class="right inline">Last Name</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="lName">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email and Avatar -->
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="email" class="right inline">Email</label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="email">
+          </div>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="avatar" class="right inline">Avatar</label>
+          </div>
+          <div class="small-9 columns">
+            <a href="#" class="button success tiny round" id="avatar">Browse</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password and confirmation -->
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="password" class="right inline">Password<label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="password">
+          </div>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="confirm" class="right">Confirm Password<label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" id="confirm">
+          </div>
+        </div>
+      </div>
+    </div>
+</form>
+</body>
+
+</html>
