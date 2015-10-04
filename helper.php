@@ -22,6 +22,21 @@
 		}
 	}
 
+	function getUser($email) {
+		$fetch_sql = "SELECT * FROM users WHERE email = '" . $email . "'";
+		$res = mysql_query($fetch_sql);
+		$data_array = array();
+
+		if ($res) {
+			$temp = mysql_fetch_assoc($res);
+			$id = $temp['id'];
+		}
+		else {
+			die("Error");
+		}
+		return $id;
+	}
+
 	function categories() {
 		$select_cats_sql = "SELECT * FROM categories";
 		$res = mysql_query($select_cats_sql);
@@ -62,7 +77,7 @@
 			$numrows = mysql_num_rows($res);
 		else {
 			$numrows = 0;
-			die ("Error");
+			die("Error");
 		}
 
 		if ($numrows > 0) {
@@ -87,9 +102,23 @@
 			$product = mysql_fetch_assoc($res);
 		}
 		else {
-			die ("Error");
+			die("Error");
 		}
 		return $product;
+	}
+
+	function getHistory($id) {
+		$fetch_sql = "SELECT * FROM history WHERE userId = '" . $id . "'";
+		$res = mysql_query($fetch_sql);
+		$history = array();
+
+		if ($res) {
+			$history = mysql_fetch_assoc($res);
+		}
+		else {
+			die("Error");
+		}
+		return $history;
 	}
 
 	function fetchUserData($email) {
