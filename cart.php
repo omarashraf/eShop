@@ -56,6 +56,9 @@
       </ul>
     </nav>
   </div>
+  <div style="float: right;">
+  		<a href="productshome.php" class="button success">Add items</a>
+  </div>
 </body>
 </html>
 <?php
