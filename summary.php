@@ -51,14 +51,18 @@
         $cat = mysql_fetch_assoc($res);
 
         echo "<b>Category: </b>" . $cat['catName'] . "<br>";
-
-
         //echo $product['photo'] . "<br>";
         echo "<b>Price: </b>$" . $product['price'] . "<br>";
         echo "<b>Rating: </b>" . $product['rating'] . "<br>";
         echo "<b>Stock: </b>" . $product['stock'] . "<br>";
         echo "<b>Description: </b>" . $product['description'] . "<br>";
-        echo "<a href=\"#\" class=\"button tiny alert\">Add to cart</a>";
+
+        if ($product['stock'] > 0) {
+          echo "<a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+        }
+        else {
+          echo "<a class=\"button tiny disabled\">Add to cart</a></li>";
+        }
       }
     ?>
   </div>
