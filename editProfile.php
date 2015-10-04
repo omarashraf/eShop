@@ -63,7 +63,7 @@
 							$update_editted_user = "UPDATE users SET first_name = '" . $_POST['fname_edit'] ."', last_name = '" . $_POST['lname_edit'] . 
 							"', email = '" . $_POST['email_edit'] . "' WHERE id = '" . $_SESSION['loggedin'] . "'";
 							mysql_query($update_editted_user);
-							header('Location: homepage.php');
+							header('Location: productshome.php');
 						}
 						elseif (!validFname($_POST['fname_edit'])) {
 							echo "<div data-alert class='alert-box alert'>

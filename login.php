@@ -63,7 +63,7 @@
 								}
 							}
 							$_SESSION['loggedin_password'] = $_POST['password'];
-							header('Location: homepage.php');
+							header('Location: productshome.php');
 						}
 						else {
 							//echo "<small class='error'>Invalid entry</small>";
