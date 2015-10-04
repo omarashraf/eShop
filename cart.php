@@ -66,12 +66,13 @@
 		$temp_arr = $_SESSION['cart'];
 		for ($i = 0; $i < count($_SESSION['cart']); $i++) {
 			echo $temp_arr[$i] . "<br>";
-			$products_display_sql = "SELECT * FROM products WHERE id = '" . $temp_arr[$i] . "'";
+			$products_display_sql = "SELECT * FROM products WHERE pId = '" . $temp_arr[$i] . "'";
 			$res = mysql_query($products_display_sql);
-	
+			
 			if (mysql_num_rows($res) > 0) {
 				while($temp = mysql_fetch_assoc($res)) {
-					echo "Product name: " . $temp['pName'] . ", description: " . $temp['description'] . ", and price: " .$temp['price'] . "<br>";
+					echo "Product name: " . $temp['pName'] . ", description: " . $temp['description'] . ", and price: " .$temp['price'];
+					echo " <a href='removeFromCart.php?id=" . $i . "'>Remove</a>" . "<br>";
 					break;
 				}
 			}
