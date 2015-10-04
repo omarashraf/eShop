@@ -26,7 +26,7 @@
         <li style="padding-right: 20px;"><a href="productshome.php">Products</a></li>
         <li style="padding-right: 20px;"><a href="#">Profile</a></li>
         <li style="margin-top: -7.5px; font-size: 26px;"><a href="#"><i class="fi-shopping-cart"></i></a></li>
-        <li style="margin-top: -10px; float: right;">
+        <li style="margin-top: -11px; float: right;">
           <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">User</button><br>
             <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
               <li><a href="#">Edit Profile</a></li>
@@ -88,7 +88,7 @@
           if ($array['cat'][$i] == $_GET['cat']) {
             echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
             if ($array['stock'][$i] > 0) {
-              echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+              echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"addToCart.php?id={$array['id'][$i]}\" class=\"button tiny alert\">Add to cart</a></li>";
             }
             else {
               echo "Stock: " . $array['stock'][$i] . "</div><br><a class=\"button tiny disabled\">Add to cart</a></li>";
@@ -97,7 +97,7 @@
           elseif ($_GET['cat'] == 0) {
             echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
             if ($array['stock'][$i] > 0) {
-              echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+              echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"addToCart.php?id={$array['id'][$i]}\" class=\"button tiny alert\">Add to cart</a></li>";
             }
             else {
               echo "Stock: " . $array['stock'][$i] . "</div><br><a class=\"button tiny disabled\">Add to cart</a></li>";
@@ -107,7 +107,7 @@
         else {
           echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
           if ($array['stock'][$i] > 0) {
-            echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+            echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"addToCart.php?id={$array['id'][$i]}\" class=\"button tiny alert\">Add to cart</a></li>";
           }
           else {
             echo "Stock: " . $array['stock'][$i] . "</div><br><a class=\"button tiny disabled\">Add to cart</a></li>";

@@ -26,7 +26,7 @@
           <li style="padding-right: 20px;"><a href="productshome.php">Products</a></li>
           <li style="padding-right: 20px;"><a href="#">Profile</a></li>
           <li style="margin-top: -7.5px; font-size: 26px;"><a href="#"><i class="fi-shopping-cart"></i></a></li>
-          <li style="margin-top: -10px; float: right;">
+          <li style="margin-top: -11px; float: right;">
             <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">User</button><br>
               <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
                 <li><a href="#">Edit Profile</a></li>
@@ -66,7 +66,7 @@
         echo "<b>Description: </b>" . $product['description'] . "<br>";
 
         if ($product['stock'] > 0) {
-          echo "<a href=\"#\" class=\"button tiny alert\">Add to cart</a></li>";
+          echo "<a href=\"addToCart.php?id={$product['id']}\" class=\"button tiny alert\">Add to cart</a></li>";
         }
         else {
           echo "<a class=\"button tiny disabled\">Add to cart</a></li>";
