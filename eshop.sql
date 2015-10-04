@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 04, 2015 at 12:32 PM
+-- Generation Time: Oct 04, 2015 at 10:05 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -23,17 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
---
-
-CREATE TABLE IF NOT EXISTS `cart` (
-  `userId` int(11) NOT NULL,
-  `productId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `categories`
 --
 
@@ -49,6 +38,26 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`id`, `catName`) VALUES
 (1, 'books'),
 (2, 'games');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE IF NOT EXISTS `history` (
+  `userId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`userId`, `productId`) VALUES
+(18, 1),
+(18, 2),
+(18, 6);
 
 -- --------------------------------------------------------
 
@@ -73,10 +82,10 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 INSERT INTO `products` (`id`, `catId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
 (1, 1, 'the book thief', 'book', 90, 'ajkfnakjsfba', 2, 20),
-(2, 2, 'gta', 'game', 100, 'jsbfjabf', 5, 100),
+(2, 2, 'gta', 'game', 100, 'jsbfjabf', 5, 0),
 (3, 1, 'the da vinci code', 'book', 88, 'fasfdsfdsf', 2, 33),
 (4, 2, 'the witcher 3', 'game', 120, 'afsfdfsdaf', 4, 5),
-(5, 1, 'paper towns', 'book', 15, 'dasdajsfb', 3, 100),
+(5, 1, 'paper towns', 'book', 15, 'dasdajsfb', 3, 0),
 (6, 2, 'until dawn', 'dakjsbfsjdbfa', 75, 'fdjskfnjsdbafj', 4, 9);
 
 -- --------------------------------------------------------
@@ -116,17 +125,17 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `avat
 --
 
 --
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD KEY `users_cart` (`userId`),
-  ADD KEY `products_cart` (`productId`) USING BTREE;
-
---
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD KEY `users_cart` (`userId`),
+  ADD KEY `products_cart` (`productId`) USING BTREE;
 
 --
 -- Indexes for table `products`
@@ -166,11 +175,11 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `cart`
+-- Constraints for table `history`
 --
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `history`
+  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -21,7 +21,7 @@
 
     include('helper.php');
     if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
-      $user_id = getUser($_SESSION['loggedin']);
+      $user_id = $_SESSION['loggedin'];
     }
     else {
       $user_id = 0;
@@ -37,21 +37,10 @@
           ">Home</a></li>
         <li style="padding-right: 20px;"><a href="productshome.php">Products</a></li>
         <li style="padding-right: 20px;"><a href="#">Profile</a></li>
-        <li style="margin-top: -7.5px; font-size: 26px;"><a href="#"><i class="fi-shopping-cart"></i></a></li>
         <li style="margin-top: -10px; float: right;">
-          <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button round dropdown">User</button><br>
-            <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
-              <li><a href="#">Edit Profile</a></li>
-              <li><a href="#">My Cart</a></li>
-              <?php echo "<li><a href=\"history.php?id={$user_id}\">My History</a></li>"; ?>
-              <li><a href="#">Logout</a></li>
-            </ul>
-        </li>
         <!--<li style="padding-right: 20px;"><a href="#">Profile</a></li>-->
         <li style="margin-top: -7.5px; font-size: 26px;"><a href="cart.php"><i class="fi-shopping-cart"></i></a></li>
         <?php
-            include('helper.php');
-            session_start();
             if (isset($_SESSION['loggedin'])) {
               $select_users_sql = "SELECT * FROM users WHERE id = '" . $_SESSION['loggedin'] . "'";
               $res = mysql_query($select_users_sql);
@@ -65,15 +54,16 @@
               else {
                 die (mysql_error());
               }
-              echo '<li style="margin-top: -11px; float: right;">
-                      <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">' . $current_user . '</button><br>
-                        <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
-                          <li><a href="editProfile.php">Edit Profile</a></li>
-                          <li><a href="changePassword.php">Change Password</a></li>
-                          <li><a href="cart.php">My Cart</a></li>
-                          <li><a href="logout.php">Logout</a></li>
+              echo "<li style=\"margin-top: -11px; float: right;\">
+                      <button href=\"#\" data-dropdown=\"drop1\" aria-controls=\"drop1\" aria-expanded=\"false\" class=\"button round dropdown\">" . $current_user . "</button><br>
+                        <ul id=\"drop1\" data-dropdown-content class=\"f-dropdown\" aria-hidden=\"true\">
+                          <li><a href=\"editProfile.php\">Edit Profile</a></li>
+                          <li><a href=\"changePassword.php\">Change Password</a></li>
+                          <li><a href=\"cart.php\">My Cart</a></li>
+                          <li><a href=\"history.php?id=" . $user_id . "\">My History</a></li>
+                          <li><a href=\"logout.php\">Logout</a></li>
                         </ul>
-                    </li>';
+                    </li>";
             }
         ?>
       </ul>
@@ -114,13 +104,13 @@
   <!--Login/register buttons-->
   <?php
       if(!isset($_SESSION['loggedin'])) {
-          echo '<div style="margin-left: 950px;">
+          echo '<div style="float: right;">
                   <a href="login.php" class="button success">Login</a>
                   <a href="register.php" class="button">Register</a>
                 </div>';
       }
   ?>
-  
+
 
   <!-- Blocks -->
     <?php

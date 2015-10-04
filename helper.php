@@ -21,7 +21,7 @@
 		}
 	}
 
-	function getUser($email) {
+	/** function getUser($email) {
 		$fetch_sql = "SELECT * FROM users WHERE email = '" . $email . "'";
 		$res = mysql_query($fetch_sql);
 		$data_array = array();
@@ -34,7 +34,7 @@
 			die("Error");
 		}
 		return $id;
-	}
+	} */
 
 	function categories() {
 		$select_cats_sql = "SELECT * FROM categories";
@@ -222,4 +222,3 @@
 
 
 ?>
-
