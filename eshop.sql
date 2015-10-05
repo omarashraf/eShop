@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2015 at 11:38 PM
+-- Generation Time: Oct 05, 2015 at 11:49 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -52,15 +52,22 @@ CREATE TABLE IF NOT EXISTS `history` (
   `productId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`,`productId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `history`
 --
 
 INSERT INTO `history` (`id`, `userId`, `productId`) VALUES
+(4, 6, 1),
+(9, 6, 1),
+(6, 6, 2),
+(7, 6, 3),
+(8, 6, 3),
+(5, 6, 4),
 (1, 18, 1),
-(2, 18, 2);
+(2, 18, 2),
+(3, 18, 3);
 
 -- --------------------------------------------------------
 
@@ -86,11 +93,11 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`pId`, `cId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
-(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 30),
-(2, 1, 'Mr. Mercedes', 'isdbosdbf', 100, 'sdfnwiofuwe', 5, 60),
-(3, 2, 'GTA', 'seninviowv', 500, 'sdonisdnvsv', 3, 66),
-(4, 2, 'Uncharted', 'sdfionwdfbiuwef', 450, 'dviobidosvbdsv', 1, 88),
-(5, 1, 'We Were Liars', 'apodfnisdnvubrv', 80, 'sfdsodbvds', 4, 88),
+(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 25),
+(2, 1, 'Mr. Mercedes', 'isdbosdbf', 100, 'sdfnwiofuwe', 5, 58),
+(3, 2, 'GTA', 'seninviowv', 500, 'sdonisdnvsv', 3, 64),
+(4, 2, 'Uncharted', 'sdfionwdfbiuwef', 450, 'dviobidosvbdsv', 1, 87),
+(5, 1, 'We Were Liars', 'apodfnisdnvubrv', 80, 'sfdsodbvds', 4, 87),
 (6, 1, 'The Kite Runner', 'odsvpnsdivnsd', 60, 'oudfslfnsf', 6, 10),
 (7, 2, 'FIFA', 'dfopnisdnvbsdv', 600, 'iusbvkjvuev', 5, 2);
 
