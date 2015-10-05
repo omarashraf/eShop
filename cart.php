@@ -81,5 +81,6 @@
 			}
 		}
 	}
-	
 ?>
+
+  <a href="checkout.php" class="button success">Checkout</a>
