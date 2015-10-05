@@ -110,12 +110,12 @@
 		$fetch_sql = "SELECT * FROM history WHERE userId = '" . $id . "'";
 		$res = mysql_query($fetch_sql);
 		$history = array();
-
-		if ($res) {
-			$history = mysql_fetch_assoc($res);
-		}
-		else {
-			die("Error");
+		$i = 0;
+		if (mysql_num_rows($res) > 0) {
+			while($temp = mysql_fetch_assoc($res)) {
+				$history[$i] = $temp['productId'];
+				$i++;
+			}
 		}
 		return $history;
 	}

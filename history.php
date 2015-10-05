@@ -27,9 +27,9 @@
     }
     else {
       $history = getHistory($id);
-      $i = 0;
-      while ($i < sizeof($history['productId'])) {
-        echo $history['productId'][$i] . "<br>";
+      $i = 0;      
+      while ($i < count($history)) {
+        echo $history[$i] . "<br>";
         $i++;
       }
     }
