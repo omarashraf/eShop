@@ -144,8 +144,14 @@
   
 <?php
 	$temp_arr = array();
-	
-	$temp_arr = $_SESSION['cart'];
+
+	if (!isset($_SESSION['cart'])) {
+	    $_SESSION['cart'] = array();
+	}
+	else {
+		$temp_arr = $_SESSION['cart'];
+	}	
+
 	if (count($temp_arr) != 0) {
 		if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
 			echo "<a href=\"checkout.php\" onclick=\"confirm()\" class=\"button success\" style='float: right; margin-right: 35px;'>Checkout</a>";

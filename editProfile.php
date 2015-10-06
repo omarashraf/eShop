@@ -136,6 +136,10 @@
 			</div>
 		</div>
 
+		<div style="text-align: center;"><img src="images/40249_430424968136_741658136_4924265_6442406_n.jpg" style="border-radius: 50%;
+			    width: 250; height: 245;"></div>
+		<br><br>
+
 		<div class="large-3 large-centered columns">
 	      <div class="row collapse prefix-radius">
 	        <div class="small-4 columns">
@@ -172,10 +176,10 @@
 		<div class="large-3 large-centered columns">
 	      <div class="row collapse prefix-radius">
 	        <div class="small-4 columns">
-	          <span class="prefix">Browse</span>
+	          
 	        </div>
-	        <div class="small-8 columns">
-	        	<input name="image" accept="image/jpeg" type="file">
+	        <div class="small-8 columns" style="width: 100%;" style="text-align: center;">
+	        	<input name="image" accept="image/jpeg" type="file" class="button secondary" >
 	        </div>
 	      </div>
 	    </div>

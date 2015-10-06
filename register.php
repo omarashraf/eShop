@@ -228,7 +228,7 @@
 				       else
 				       {
 				         move_uploaded_file($_FILES["image"]["tmp_name"],"images/" . $_FILES["image"]["name"]);
-				         echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
+				         //echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
 
 				         $file="images/".$_FILES["image"]["name"];
 				         $sql="UPDATE users SET avatar = '$file' WHERE id = '" . $_SESSION['loggedin'] . "'";

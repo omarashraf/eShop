@@ -109,8 +109,8 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="small-6 columns">
-				<button style="float: right;" type="submit" class="button success">Login</button>
+			<div style="text-align: center;" class="small-3-centered columns">
+				<button type="submit" class="button success">Login</button>
 			</div>
 		</div>
 	</form>
