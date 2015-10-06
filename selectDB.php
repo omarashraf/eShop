@@ -1,5 +1,5 @@
 <?php
-	
+
 	function selectDB() {
 		$conn = mysql_connect('localhost', 'root', '');
 		/*if ($conn) {

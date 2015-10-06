@@ -109,15 +109,26 @@
 	function getHistory($id) {
 		$fetch_sql = "SELECT * FROM history WHERE userId = '" . $id . "'";
 		$res = mysql_query($fetch_sql);
-		$history = array();
+		$data_array = array(
+			'userId' => array(),
+			'productId' => array()
+		);
 
-		if ($res) {
-			$history = mysql_fetch_assoc($res);
+		if($res) {
+			$numrows = mysql_num_rows($res);
 		}
 		else {
+			$numrows = 0;
 			die("Error");
 		}
-		return $history;
+
+		if ($numrows > 0) {
+			while ($temp = mysql_fetch_assoc($res)) {
+				array_push($data_array['userId'], $temp['userId']);
+				array_push($data_array['productId'], $temp['productId']);
+			}
+		}
+		return $data_array;
 	}
 
 	function fetchUserData($id) {
