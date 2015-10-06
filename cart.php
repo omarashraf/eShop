@@ -88,7 +88,7 @@
 		$temp_arr = $_SESSION['cart'];
 		if (count($temp_arr) > 0) {
 			echo '<div class="row">
-				  	<h1 style="text-align: center;">My Cart</h1>
+				  	<h1 style="color: white; text-align: center;">My Cart</h1>
 				  	<div class="small-12 small-centered columns">
 				  		<table width="100%">
 				  			<thead>
@@ -108,10 +108,10 @@
 				if (mysql_num_rows($res) > 0) {
 					while($temp = mysql_fetch_assoc($res)) {
 						echo '<tr>
-					  				<th>' . $temp['pName'] . '</th>
-					  				<th>' . $temp['description'] . '</th>
-					  				<th>' . $temp['price'] . '</th>
-					  				<th><a href=\'removeFromCart.php?id=" . $i . "\'>Remove</a></th>
+					  				<td>' . $temp['pName'] . '</td>
+					  				<td>' . $temp['description'] . '</td>
+					  				<td>' . $temp['price'] . '</td>
+					  				<td><a href=\'removeFromCart.php?id=" . $i . "\'>Remove</a></td>
 					  			</tr>';
 						break;
 					}
