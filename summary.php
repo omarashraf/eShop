@@ -32,12 +32,10 @@
     <div class="contain-to-grid sticky">
       <nav style="color: white;" class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
         <ul class="inline-list" style="margin-top: 10px;">
-          <li style="padding-right: 60px;"><a style="color: white;" href="#">eShop</a></li>
-          <li style="padding-right: 20px;"><a href="#
-            ">Home</a></li>
+          <li style="padding-right: 60px;"><a style="color: white;" href="productshome.php">eShop</a></li>
           <li style="padding-right: 20px;"><a href="productshome.php">Products</a></li>
-          <li style="padding-right: 20px;"><a href="#">Profile</a></li>
-          <li style="margin-top: -7.5px; font-size: 26px;"><a href="#"><i class="fi-shopping-cart"></i></a></li>
+          <li style="padding-right: 20px;"><a href="editProfile.php">Profile</a></li>
+          <li style="margin-top: -7.5px; font-size: 26px;"><a href="cart.php"><i class="fi-shopping-cart"></i></a></li>
           <?php
               if (isset($_SESSION['loggedin'])) {
                 $select_users_sql = "SELECT * FROM users WHERE id = '" . $_SESSION['loggedin'] . "'";
