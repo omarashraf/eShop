@@ -69,7 +69,8 @@
 			'price' => array(),
 			'stock' => array(),
 			'cat' => array(),
-			'id' => array()
+			'id' => array(),
+			'photo' => array()
 		);
 
 		if ($res)
@@ -86,6 +87,7 @@
 				array_push($data_array['stock'], $temp['stock']);
 				array_push($data_array['cat'], $temp['catId']);
 				array_push($data_array['id'], $temp['id']);
+				array_push($data_array['photo'], $temp['photo']);
 
 			}
 		}
