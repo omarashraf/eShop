@@ -1,18 +1,15 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/foundation.css">
-	<link rel="stylesheet" href="css/foundation-icons.css" />
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
-	<!-- This is how you would link your custom stylesheet -->
-	<!--<link rel="stylesheet" href="css/app.css">-->
-	<script src="js/vendor/modernizr.js"></script>
-	<script src="js/foundation.min.js"></script>
-	<script src="typed.js-master/js/typed.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(document).foundation();
-		});
-	</script>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/foundation-icons.css">
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="js/vendor/placeholder.js"></script>
+  <script src="js/vendor/fastclick.js"></script>
+  <script src="js/foundation.min.js"></script>
 </head>
 
 <body>
@@ -71,6 +68,11 @@
   <div style="float: right;">
   		<a href="productshome.php" class="button success">Add items</a>
   </div>
+
+	<script>
+    $(document).foundation();
+  </script>
+
 </body>
 </html>
 <?php

@@ -2,17 +2,15 @@
 
 <head>
 	<link rel="stylesheet" href="css/foundation.css">
-	<link rel="stylesheet" href="css/foundation-icons.css" />
-	<script src="js/foundation.min.js"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
-	<!-- This is how you would link your custom stylesheet -->
-	<!--<link rel="stylesheet" href="css/app.css">-->
-	<script src="js/vendor/modernizr.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(document).foundation();
-		});
-	</script>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/foundation-icons.css">
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="js/vendor/placeholder.js"></script>
+  <script src="js/vendor/fastclick.js"></script>
+  <script src="js/foundation.min.js"></script>
 </head>
 
 <body>
@@ -51,7 +49,7 @@
                 else {
                   die (mysql_error());
                 }
-                echo "<li style=\"margin-top: -11px; float: right;\">
+								echo "<li style=\"margin-top: -11px; float: right;\">
                         <button href=\"#\" data-dropdown=\"drop1\" aria-controls=\"drop1\" aria-expanded=\"false\" class=\"button round dropdown\">" . $current_user . "</button><br>
                           <ul id=\"drop1\" data-dropdown-content class=\"f-dropdown\" aria-hidden=\"true\">
                             <li><a href=\"editProfile.php\">Edit Profile</a></li>
@@ -170,6 +168,11 @@
 			<button type="submit" class="button success">Edit</button>
 		</div>
 	</form>
+
+	<script>
+    $(document).foundation();
+  </script>
+	
 </body>
 </html>
 
