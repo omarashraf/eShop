@@ -96,6 +96,15 @@
 		}
 	}
 
+?>
+  <!--<form name="checkoutForm" action="checkout.php" method="post">
+    <input type='hidden' name='checkedout' id='checkedout' value='1'></input>
+    <button type="submit" class="button success">Checkout</button>
+  </form>-->
+
+  
+<?php
+
 	if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
 		echo "<a href=\"checkout.php\" onclick=\"confirm()\" class=\"button success\">Checkout</a>";
 		echo "<script>
@@ -108,3 +117,4 @@
 		echo "<a href=\"checkout.php\" class=\"button success\">Checkout</a>";
 	}
 ?>
+

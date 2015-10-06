@@ -81,7 +81,7 @@
 
 	<div class="element" style="margin-left: 865px; margin-top: 75px; font-size: 30px;"></div>
 
-	<form name="registerForm" method="post" style="margin-top: 30px;">
+	<form enctype='multipart/form-data' method="post" style="margin-top: 30px;">
 		<input type='hidden' name='registered' id='registered' value='1'></input>
 		<div class="row">
 			<div class="row">
@@ -137,7 +137,7 @@
 
 			<br>
 			<div class="row">
-				<div class="small-5 small-centered columns"><input type="file" class="button secondary"></input></div>
+				<div class="small-5 small-centered columns"><input name="image" accept="image/jpeg" type="file" class="button secondary"></div>
 			</div>
 			<br>
 			<div class="row">
@@ -165,7 +165,7 @@
 			</div>
 			<br>
 			<div class="row" style="margin-left: 435px;">
-				<button type="submit" onclick="check()" class="button success">Register</button>
+				<input type="submit" onclick="check()" class="button success" value="Register">
 			</div>
 		</div>
 	</form>
@@ -220,7 +220,25 @@
 						}
 					}
 					$_SESSION['loggedin_password'] = $_POST['password'];
-					header('Location: homepage.php');
+					if ($_FILES["image"]["error"] > 0) 
+				      {
+				         echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
+				         echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
+				       }
+				       else
+				       {
+				         move_uploaded_file($_FILES["image"]["tmp_name"],"images/" . $_FILES["image"]["name"]);
+				         echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
+
+				         $file="images/".$_FILES["image"]["name"];
+				         $sql="UPDATE users SET avatar = '$file' WHERE id = '" . $_SESSION['loggedin'] . "'";
+
+				         if (!mysql_query($sql))
+				         {
+				            die('Error: ' . mysql_error());
+				         }
+				       }
+					header('Location: productshome.php');
 				}
 				else {
 					//die (mysql_error());
