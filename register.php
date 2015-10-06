@@ -79,7 +79,7 @@
     </div>
     <br>
 
-	<div class="element" style="margin-left: 865px; margin-top: 75px; font-size: 30px;"></div>
+	<div class="element" style="text-align: center; margin-top: 75px; font-size: 30px;"></div>
 
 	<form enctype='multipart/form-data' method="post" style="margin-top: 30px;">
 		<input type='hidden' name='registered' id='registered' value='1'></input>
@@ -220,7 +220,7 @@
 						}
 					}
 					$_SESSION['loggedin_password'] = $_POST['password'];
-					if ($_FILES["image"]["error"] > 0) 
+					if ($_FILES["image"]["error"] > 0)
 				      {
 				         echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
 				         echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
