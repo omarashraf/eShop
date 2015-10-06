@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Oct 04, 2015 at 10:05 PM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Host: 127.0.0.1
+-- Generation Time: Oct 05, 2015 at 11:49 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `eshop`
@@ -27,17 +27,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL,
-  `catName` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `cId` int(11) NOT NULL AUTO_INCREMENT,
+  `catName` varchar(50) NOT NULL,
+  PRIMARY KEY (`cId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `catName`) VALUES
-(1, 'books'),
-(2, 'games');
+INSERT INTO `categories` (`cId`, `catName`) VALUES
+(1, 'Books'),
+(2, 'Games');
 
 -- --------------------------------------------------------
 
@@ -46,18 +47,27 @@ INSERT INTO `categories` (`id`, `catName`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `productId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `productId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`,`productId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `history`
 --
 
-INSERT INTO `history` (`userId`, `productId`) VALUES
-(18, 1),
-(18, 2),
-(18, 6);
+INSERT INTO `history` (`id`, `userId`, `productId`) VALUES
+(4, 6, 1),
+(9, 6, 1),
+(6, 6, 2),
+(7, 6, 3),
+(8, 6, 3),
+(5, 6, 4),
+(1, 18, 1),
+(2, 18, 2),
+(3, 18, 3);
 
 -- --------------------------------------------------------
 
@@ -66,27 +76,30 @@ INSERT INTO `history` (`userId`, `productId`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(11) NOT NULL,
-  `catId` int(11) NOT NULL,
+  `pId` int(11) NOT NULL AUTO_INCREMENT,
+  `cId` int(11) NOT NULL,
   `pName` varchar(50) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `description` varchar(100) NOT NULL,
   `price` double NOT NULL,
-  `photo` varchar(200) DEFAULT NULL,
-  `rating` int(11) NOT NULL DEFAULT '0',
-  `stock` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `photo` varchar(200) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
+  PRIMARY KEY (`pId`),
+  KEY `cId` (`cId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `catId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
-(1, 1, 'the book thief', 'book', 90, 'ajkfnakjsfba', 2, 20),
-(2, 2, 'gta', 'game', 100, 'jsbfjabf', 5, 0),
-(3, 1, 'the da vinci code', 'book', 88, 'fasfdsfdsf', 2, 33),
-(4, 2, 'the witcher 3', 'game', 120, 'afsfdfsdaf', 4, 5),
-(5, 1, 'paper towns', 'book', 15, 'dasdajsfb', 3, 0),
-(6, 2, 'until dawn', 'dakjsbfsjdbfa', 75, 'fdjskfnjsdbafj', 4, 9);
+INSERT INTO `products` (`pId`, `cId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
+(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 25),
+(2, 1, 'Mr. Mercedes', 'isdbosdbf', 100, 'sdfnwiofuwe', 5, 58),
+(3, 2, 'GTA', 'seninviowv', 500, 'sdonisdnvsv', 3, 64),
+(4, 2, 'Uncharted', 'sdfionwdfbiuwef', 450, 'dviobidosvbdsv', 1, 87),
+(5, 1, 'We Were Liars', 'apodfnisdnvubrv', 80, 'sfdsodbvds', 4, 87),
+(6, 1, 'The Kite Runner', 'odsvpnsdivnsd', 60, 'oudfslfnsf', 6, 10),
+(7, 2, 'FIFA', 'dfopnisdnvbsdv', 600, 'iusbvkjvuev', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -95,14 +108,16 @@ INSERT INTO `products` (`id`, `catId`, `pName`, `description`, `price`, `photo`,
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
   `avatar` varchar(25) NOT NULL,
-  `previous_buys` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  `previous_buys` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_unique` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `users`
@@ -116,60 +131,15 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `avat
 (11, 'Gardner', 'Anonymous', 'gard@gmail.com', 'gard8888', '', 0),
 (12, 'Mohsen', 'Anonymous', 'moh@gmail.com', '12345678', '', 0),
 (13, 'Sameh', 'Anonymous', 'same@gmail.com', 'sameh777', '', 0),
-(18, 'Omar', 'Emad', 'omar@gmail.com', 'omaromar7', '', 0),
+(18, 'Omar', 'Ashraf', 'omar@gmail.com', 'omaromar8', '', 0),
 (19, 'Mike', 'Anonymous', 'mike@gmail.com', 'mikemike8', '', 0),
-(20, 'Harvey', 'Anonymous', 'harvey@gmail.com', 'harveydent6', '', 0);
+(20, 'Harvey', 'Anonymous', 'harvey@gmail.com', 'harveydent6', '', 0),
+(24, 'Anonymous', 'Zane', 'rachel@gmail.com', 'zanerachel8', '', 0),
+(27, 'Dana', 'Scott', 'dana@gmail.com', 'scottie88', '', 0),
+(28, 'Anonymous', 'Anonymous', 'jessica@gmail.com', 'jessica99', '', 0),
+(29, 'Louis', '*Anonymous*', 'louis@gmail.com', 'littup10', '', 0),
+(30, 'Jack', 'Anonymous', 'jack@gmail.com', 'jackjack7', '', 0);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `history`
---
-ALTER TABLE `history`
-  ADD KEY `users_cart` (`userId`),
-  ADD KEY `products_cart` (`productId`) USING BTREE;
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `catId` (`catId`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_unique` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- Constraints for dumped tables
 --
@@ -178,8 +148,13 @@ ALTER TABLE `users`
 -- Constraints for table `history`
 --
 ALTER TABLE `history`
-  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `userId_cons_fk` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `category_id_fk` FOREIGN KEY (`cId`) REFERENCES `categories` (`cId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
