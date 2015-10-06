@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2015 at 11:49 PM
+-- Generation Time: Oct 06, 2015 at 12:00 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -27,18 +27,51 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `cId` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `catName` varchar(50) NOT NULL,
-  PRIMARY KEY (`cId`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`cId`, `catName`) VALUES
+INSERT INTO `categories` (`id`, `catName`) VALUES
 (1, 'Books'),
 (2, 'Games');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eikones`
+--
+
+CREATE TABLE IF NOT EXISTS `eikones` (
+  `auxon` varchar(100) NOT NULL,
+  `path` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eikones`
+--
+
+INSERT INTO `eikones` (`auxon`, `path`) VALUES
+('', 'images/AzlE02HCUAA8Olu.jpg'),
+('', 'images/AzlE02HCUAA8Olu.jpg'),
+('', 'images/AzlE02HCUAA8Olu.jpg'),
+('', 'images/AzlE02HCUAA8Olu.jpg'),
+('', 'images/AzlE02HCUAA8Olu.jpg'),
+('', 'images/664281507.jpg'),
+('', 'images/40249_430424968136_741658136_4924265_6442406_n.jpg'),
+('', 'images/'),
+('', 'images/'),
+('', 'images/'),
+('', 'images/AMR 9_01.JPG'),
+('', 'images/AMR 29-7_019.JPG'),
+('', 'images/'),
+('', 'images/mora poere_004.JPG'),
+('', 'images/mora poere_011.JPG'),
+('', 'images/mora poere_112.JPG');
 
 -- --------------------------------------------------------
 
@@ -52,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `history` (
   `productId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`,`productId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `history`
@@ -66,6 +99,7 @@ INSERT INTO `history` (`id`, `userId`, `productId`) VALUES
 (8, 6, 3),
 (5, 6, 4),
 (1, 18, 1),
+(12, 18, 1),
 (2, 18, 2),
 (3, 18, 3);
 
@@ -76,25 +110,25 @@ INSERT INTO `history` (`id`, `userId`, `productId`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-  `pId` int(11) NOT NULL AUTO_INCREMENT,
-  `cId` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `catId` int(11) NOT NULL,
   `pName` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL,
   `price` double NOT NULL,
   `photo` varchar(200) NOT NULL,
   `rating` int(11) NOT NULL,
   `stock` int(11) NOT NULL,
-  PRIMARY KEY (`pId`),
-  KEY `cId` (`cId`)
+  PRIMARY KEY (`id`),
+  KEY `cId` (`catId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`pId`, `cId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
-(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 25),
-(2, 1, 'Mr. Mercedes', 'isdbosdbf', 100, 'sdfnwiofuwe', 5, 58),
+INSERT INTO `products` (`id`, `catId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
+(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 23),
+(2, 1, 'Mr. Mercedes', 'isdbosdbf', 100, 'sdfnwiofuwe', 5, 57),
 (3, 2, 'GTA', 'seninviowv', 500, 'sdonisdnvsv', 3, 64),
 (4, 2, 'Uncharted', 'sdfionwdfbiuwef', 450, 'dviobidosvbdsv', 1, 87),
 (5, 1, 'We Were Liars', 'apodfnisdnvubrv', 80, 'sfdsodbvds', 4, 87),
@@ -117,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `previous_buys` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_unique` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `users`
@@ -138,7 +172,9 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `avat
 (27, 'Dana', 'Scott', 'dana@gmail.com', 'scottie88', '', 0),
 (28, 'Anonymous', 'Anonymous', 'jessica@gmail.com', 'jessica99', '', 0),
 (29, 'Louis', '*Anonymous*', 'louis@gmail.com', 'littup10', '', 0),
-(30, 'Jack', 'Anonymous', 'jack@gmail.com', 'jackjack7', '', 0);
+(30, 'Jack', 'Anonymous', 'jack@gmail.com', 'jackjack7', '', 0),
+(31, 'Michael', 'Scofield', 'michaelsco@gmail.com', 'scofield8', '', 0),
+(44, 'Anonymous', 'Anonymous', 'iansfonasf@gmail.com', 'omaromar9', 'images/AMR 29-7_019.JPG', 0);
 
 --
 -- Constraints for dumped tables
@@ -154,7 +190,7 @@ ALTER TABLE `history`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `category_id_fk` FOREIGN KEY (`cId`) REFERENCES `categories` (`cId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `category_id_fk` FOREIGN KEY (`catId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
