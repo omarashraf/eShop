@@ -55,7 +55,7 @@
 		if ($numrows > 0) {
 			while ($temp = mysql_fetch_assoc($res)) {
 				array_push($data_array['name'], $temp['catName']);
-				array_push($data_array['id'], $temp['cId']);
+				array_push($data_array['id'], $temp['id']);
 			}
 		}
 		return $data_array;
@@ -84,8 +84,8 @@
 				array_push($data_array['name'], $temp['pName']);
 				array_push($data_array['price'], $temp['price']);
 				array_push($data_array['stock'], $temp['stock']);
-				array_push($data_array['cat'], $temp['cId']);
-				array_push($data_array['id'], $temp['pId']);
+				array_push($data_array['cat'], $temp['catId']);
+				array_push($data_array['id'], $temp['id']);
 
 			}
 		}
@@ -109,15 +109,26 @@
 	function getHistory($id) {
 		$fetch_sql = "SELECT * FROM history WHERE userId = '" . $id . "'";
 		$res = mysql_query($fetch_sql);
-		$history = array();
-		$i = 0;
-		if (mysql_num_rows($res) > 0) {
-			while($temp = mysql_fetch_assoc($res)) {
-				$history[$i] = $temp['productId'];
-				$i++;
+		$data_array = array(
+			'userId' => array(),
+			'productId' => array()
+		);
+
+		if($res) {
+			$numrows = mysql_num_rows($res);
+		}
+		else {
+			$numrows = 0;
+			die("Error");
+		}
+
+		if ($numrows > 0) {
+			while ($temp = mysql_fetch_assoc($res)) {
+				array_push($data_array['userId'], $temp['userId']);
+				array_push($data_array['productId'], $temp['productId']);
 			}
 		}
-		return $history;
+		return $data_array;
 	}
 
 	function fetchUserData($id) {
