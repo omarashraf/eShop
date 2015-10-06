@@ -70,7 +70,7 @@
   		<a href="productshome.php" class="button success">Add items</a>
   </div>-->
 
-  
+
 
 	<script>
     $(document).foundation();
@@ -124,7 +124,7 @@
 					$(document).foundation();
 					$(function(){
 					    $(".element").typed({
-					      strings: ["Your cart is now empty. You can add items throught our products page."],
+					      strings: ["Your cart is now empty. You can add items through our products page."],
 					      typeSpeed: 0
 					    });
 					});
@@ -133,7 +133,7 @@
 	}
 
 ?>
-		
+
 </body>
 </html>
   <!--<form name="checkoutForm" action="checkout.php" method="post">
@@ -141,16 +141,18 @@
     <button type="submit" class="button success">Checkout</button>
   </form>-->
 
-  
+
 <?php
 	$temp_arr = array();
 
 	if (!isset($_SESSION['cart'])) {
+
 	    $_SESSION['cart'] = array();
 	}
 	else {
 		$temp_arr = $_SESSION['cart'];
 	}	
+
 
 	if (count($temp_arr) != 0) {
 		if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
@@ -167,6 +169,5 @@
 			echo "<a href=\"productshome.php\" class=\"button alert\" style='float: right; margin-right: 5px;'>Add items</a>";
 		}
 	}
-	
-?>
 
+?>
