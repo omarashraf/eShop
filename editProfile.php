@@ -24,6 +24,7 @@
     }
     else {
       $user_id = 0;
+			header('Location: login.php');
     }
   ?>
 
@@ -172,7 +173,7 @@
 	<script>
     $(document).foundation();
   </script>
-	
+
 </body>
 </html>
 

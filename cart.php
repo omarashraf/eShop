@@ -95,6 +95,16 @@
 			}
 		}
 	}
-?>
 
-  <a href="checkout.php" class="button success">Checkout</a>
+	if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
+		echo "<a href=\"checkout.php\" onclick=\"confirm()\" class=\"button success\">Checkout</a>";
+		echo "<script>
+						function confirm() {
+						    alert(\"You have successfully purchased the items!\");
+						}
+					</script>";
+	}
+	else {
+		echo "<a href=\"checkout.php\" class=\"button success\">Checkout</a>";
+	}
+?>
