@@ -109,7 +109,7 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="small-9 columns">
+			<div class="small-6 columns">
 				<button style="float: right;" type="submit" class="button success">Login</button>
 			</div>
 		</div>
