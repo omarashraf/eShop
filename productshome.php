@@ -91,7 +91,7 @@
   </div>
 
 <!-- Right nav -->
-  <div style="margin-left: 40px;" class="small-8 columns">
+  <div style="margin-left: 40px;" class="small-8 columns" data-equalizer>
 
   <!-- Search -->
     <!--<a href="#" style="border-radius: 25px;" class="button tiny success left inline">Search <i class="fi-magnifying-glass"></i></a>
@@ -118,7 +118,8 @@
         'price' => array(),
         'stock' => array(),
         'cat' => array(),
-        'id' => array()
+        'id' => array(),
+        'photo' => array()
       );
       $array = products();
 
@@ -127,7 +128,7 @@
       while ($i < sizeof($array['name'])) {
         if ($_GET){
           if ($array['cat'][$i] == $_GET['cat']) {
-            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
+            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img style=\"height: 300px; width: 240px;\" src=\"img/" . $array['photo'][$i] . "\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
             if ($array['stock'][$i] > 0) {
               echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"addToCart.php?id={$array['id'][$i]}\" class=\"button tiny alert\">Add to cart</a></li>";
             }
@@ -136,7 +137,7 @@
             }
           }
           elseif ($_GET['cat'] == 0) {
-            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
+            echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img style=\"height: 300px; width: 240px;\" src=\"img/" . $array['photo'][$i] . "\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
             if ($array['stock'][$i] > 0) {
               echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"addToCart.php?id={$array['id'][$i]}\" class=\"button tiny alert\">Add to cart</a></li>";
             }
@@ -146,7 +147,7 @@
           }
         }
         else {
-          echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img src=\"img/default-placeholder.png\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
+          echo "<li>" . $array['name'][$i] . "<a class=\"th\" href=\"summary.php?id=" . $array['id'][$i] . "\"><img style=\"height: 300px; width: 240px;\" src=\"img/" . $array['photo'][$i] . "\"></a> $" . $array['price'][$i] . "<div style=\"float: right;\">";
           if ($array['stock'][$i] > 0) {
             echo "Stock: " . $array['stock'][$i] . "</div><br><a href=\"addToCart.php?id={$array['id'][$i]}\" class=\"button tiny alert\">Add to cart</a></li>";
           }

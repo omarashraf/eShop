@@ -70,15 +70,16 @@
 <!-- Left nav -->
   <div class="small-3 columns">
     <?php
-      echo "<a class=\"th\" href=\"#\"><img src=\"img/default-placeholder.png\"></a>";
+      if ($_GET) {
+        $product = getProduct($_GET['id']);
+      }
+      echo "<a class=\"th\" href=\"#\"><img style=\"height: 300px; width: 240px;\" src=\"img/" . $product['photo'] . "\"></a>";
     ?>
   </div>
 
 <!-- Right nav -->
   <div style="margin-left: 0px;" class="small-4 columns">
     <?php
-      if ($_GET) {
-        $product = getProduct($_GET['id']);
         echo "<b>Name: </b>" . $product['pName'] . "<br>";
 
         $select_cat_sql = "SELECT * FROM categories WHERE id = '" . $product['catId'] . "'";
@@ -98,7 +99,6 @@
         else {
           echo "<a class=\"button tiny disabled\">Add to cart</a></li>";
         }
-      }
     ?>
   </div>
 
