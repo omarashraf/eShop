@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/custom.css">
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/modernizr.js"></script>
@@ -13,7 +14,7 @@
   <script src="js/foundation.min.js"></script>
 </head>
 
-<body>
+<body class="bg" style="background: url(img/blurred.jpg) no-repeat center center fixed;">
 	<?php
     session_start();
 
@@ -186,10 +187,10 @@
 		<div class="large-3 large-centered columns">
 	      <div class="row collapse prefix-radius">
 	        <div class="small-4 columns">
-	          <span class="prefix">Browse</span>
+
 	        </div>
-	        <div class="small-8 columns">
-	        	<input name="image" accept="image/jpeg" type="file">
+	        <div class="small-8 columns" style="width: 100%;" style="text-align: center;">
+	        	<input name="image" accept="image/jpeg" type="file" class="button secondary" >
 	        </div>
 	      </div>
 	    </div>

@@ -4,6 +4,7 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/custom.css">
 
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/modernizr.js"></script>
@@ -27,7 +28,7 @@
 		}*/
 	</script>
 </head>
-<body>
+<body class="bg" style="color: white; background: url(img/blurred.jpg) no-repeat center center fixed;">
 	<?php
     session_start();
 
@@ -228,7 +229,7 @@
 				       else
 				       {
 				         move_uploaded_file($_FILES["image"]["tmp_name"],"images/" . $_FILES["image"]["name"]);
-				         echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
+				         //echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
 
 				         $file="images/".$_FILES["image"]["name"];
 				         $sql="UPDATE users SET avatar = '$file' WHERE id = '" . $_SESSION['loggedin'] . "'";

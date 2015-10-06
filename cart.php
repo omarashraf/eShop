@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/custom.css">
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/modernizr.js"></script>
@@ -13,7 +14,7 @@
   <script src="typed.js-master/js/typed.js"></script>
 </head>
 
-<body>
+<body class="bg" style="color: white; background: url(img/blurred.jpg) no-repeat center center fixed;">
 
 	<?php
     session_start();
@@ -147,10 +148,11 @@
 	$temp_arr = array();
 
 	if (!isset($_SESSION['cart'])) {
-		$_SESSION['cart'] = array();
+	  $_SESSION['cart'] = array();
 	}
 
 	$temp_arr = $_SESSION['cart'];
+
 	if (count($temp_arr) != 0) {
 		if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {
 			echo "<a href=\"checkout.php\" onclick=\"confirm()\" class=\"button success\" style='float: right; margin-right: 35px;'>Checkout</a>";

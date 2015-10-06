@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/custom.css">
 
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/vendor/modernizr.js"></script>
@@ -14,7 +15,7 @@
 	<script src="typed.js-master/js/typed.js"></script>
 
 </head>
-<body>
+<body class="bg" style="color: white; background: url(img/blurred.jpg) no-repeat center center fixed;">
 	<?php
     session_start();
 
@@ -109,8 +110,8 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="small-6 columns">
-				<button style="float: right;" type="submit" class="button success">Login</button>
+			<div style="text-align: center;" class="small-3-centered columns">
+				<button type="submit" class="button success">Login</button>
 			</div>
 		</div>
 	</form>
