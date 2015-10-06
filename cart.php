@@ -80,7 +80,9 @@
 
 <?php
 	//session_start();
-	if (isset($_SESSION['cart'])) {
+	if (!isset($_SESSION['cart'])) {
+		$_SESSION['cart'] = array();
+	}
 		$temp_arr = array();
 		$temp_arr = $_SESSION['cart'];
 		if (count($temp_arr) > 0) {
@@ -130,7 +132,6 @@
 					});
 				</script>';
 		}
-	}
 
 ?>
 

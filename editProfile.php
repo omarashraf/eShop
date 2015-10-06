@@ -86,7 +86,7 @@
 							"', email = '" . $_POST['email_edit'] . "' WHERE id = '" . $_SESSION['loggedin'] . "'";
 							mysql_query($update_editted_user);
 
-							if ($_FILES["image"]["error"] > 0) 
+							if ($_FILES["image"]["error"] > 0)
 						      {
 						         echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
 						         echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
@@ -135,6 +135,20 @@
 				?>
 			</div>
 		</div>
+
+		<?php
+			//include('helper.php');
+			$select_users_img_sql = "SELECT * FROM users WHERE id = '" . $_SESSION['loggedin'] . "'";
+			$res = mysql_query($select_users_img_sql);
+			if (mysql_num_rows($res)) {
+				while ($temp = mysql_fetch_assoc($res)) {
+					$image = $temp['avatar'];
+					break;
+				}
+			}
+		?>
+		<div style="text-align: center;"><img src="<?php echo $image; ?>" style="border-radius: 50%; width: 200px; height: 245px;"></div>
+		<br>
 
 		<div class="large-3 large-centered columns">
 	      <div class="row collapse prefix-radius">
