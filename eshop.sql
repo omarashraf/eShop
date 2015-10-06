@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2015 at 12:00 PM
+-- Generation Time: Oct 06, 2015 at 12:36 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.9
 
@@ -43,39 +43,6 @@ INSERT INTO `categories` (`id`, `catName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eikones`
---
-
-CREATE TABLE IF NOT EXISTS `eikones` (
-  `auxon` varchar(100) NOT NULL,
-  `path` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `eikones`
---
-
-INSERT INTO `eikones` (`auxon`, `path`) VALUES
-('', 'images/AzlE02HCUAA8Olu.jpg'),
-('', 'images/AzlE02HCUAA8Olu.jpg'),
-('', 'images/AzlE02HCUAA8Olu.jpg'),
-('', 'images/AzlE02HCUAA8Olu.jpg'),
-('', 'images/AzlE02HCUAA8Olu.jpg'),
-('', 'images/664281507.jpg'),
-('', 'images/40249_430424968136_741658136_4924265_6442406_n.jpg'),
-('', 'images/'),
-('', 'images/'),
-('', 'images/'),
-('', 'images/AMR 9_01.JPG'),
-('', 'images/AMR 29-7_019.JPG'),
-('', 'images/'),
-('', 'images/mora poere_004.JPG'),
-('', 'images/mora poere_011.JPG'),
-('', 'images/mora poere_112.JPG');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `history`
 --
 
@@ -85,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `history` (
   `productId` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`,`productId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `history`
@@ -94,10 +61,13 @@ CREATE TABLE IF NOT EXISTS `history` (
 INSERT INTO `history` (`id`, `userId`, `productId`) VALUES
 (4, 6, 1),
 (9, 6, 1),
+(13, 6, 1),
 (6, 6, 2),
 (7, 6, 3),
 (8, 6, 3),
 (5, 6, 4),
+(14, 6, 7),
+(15, 6, 7),
 (1, 18, 1),
 (12, 18, 1),
 (2, 18, 2),
@@ -127,13 +97,13 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`id`, `catId`, `pName`, `description`, `price`, `photo`, `rating`, `stock`) VALUES
-(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 23),
+(1, 1, 'The Book Thief', 'fapnfinfiwnefi', 120, 'sidonvsdinvsoi', 4, 22),
 (2, 1, 'Mr. Mercedes', 'isdbosdbf', 100, 'sdfnwiofuwe', 5, 57),
 (3, 2, 'GTA', 'seninviowv', 500, 'sdonisdnvsv', 3, 64),
 (4, 2, 'Uncharted', 'sdfionwdfbiuwef', 450, 'dviobidosvbdsv', 1, 87),
 (5, 1, 'We Were Liars', 'apodfnisdnvubrv', 80, 'sfdsodbvds', 4, 87),
 (6, 1, 'The Kite Runner', 'odsvpnsdivnsd', 60, 'oudfslfnsf', 6, 10),
-(7, 2, 'FIFA', 'dfopnisdnvbsdv', 600, 'iusbvkjvuev', 5, 2);
+(7, 2, 'FIFA', 'dfopnisdnvbsdv', 600, 'iusbvkjvuev', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -173,8 +143,7 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `avat
 (28, 'Anonymous', 'Anonymous', 'jessica@gmail.com', 'jessica99', '', 0),
 (29, 'Louis', '*Anonymous*', 'louis@gmail.com', 'littup10', '', 0),
 (30, 'Jack', 'Anonymous', 'jack@gmail.com', 'jackjack7', '', 0),
-(31, 'Michael', 'Scofield', 'michaelsco@gmail.com', 'scofield8', '', 0),
-(44, 'Anonymous', 'Anonymous', 'iansfonasf@gmail.com', 'omaromar9', 'images/AMR 29-7_019.JPG', 0);
+(31, 'Michael', 'Scofield', 'michaelsco@gmail.com', 'scofield8', '', 0);
 
 --
 -- Constraints for dumped tables

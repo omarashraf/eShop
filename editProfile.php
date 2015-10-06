@@ -67,7 +67,7 @@
     </div>
     <br>
 
-	<form name="editForm" method="post" action="editProfile.php" style="margin-top: 100px;">
+	<form name="editForm" enctype='multipart/form-data' method="post" action="editProfile.php" style="margin-top: 100px;">
 		<input type='hidden' name='editted' id='editted' value='1'></input>
 
 		<div class="row">
@@ -85,6 +85,26 @@
 							$update_editted_user = "UPDATE users SET first_name = '" . $_POST['fname_edit'] ."', last_name = '" . $_POST['lname_edit'] .
 							"', email = '" . $_POST['email_edit'] . "' WHERE id = '" . $_SESSION['loggedin'] . "'";
 							mysql_query($update_editted_user);
+
+							if ($_FILES["image"]["error"] > 0) 
+						      {
+						         echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
+						         echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
+						       }
+						       else
+						       {
+						         move_uploaded_file($_FILES["image"]["tmp_name"],"images/" . $_FILES["image"]["name"]);
+						         echo"<font size = '5'><font color=\"#0CF44A\">SAVED<br>";
+
+						         $file="images/".$_FILES["image"]["name"];
+						         $sql="UPDATE users SET avatar = '$file' WHERE id = '" . $_SESSION['loggedin'] . "'";
+
+						         if (!mysql_query($sql))
+						         {
+						            die('Error: ' . mysql_error());
+						         }
+						       }
+
 							header('Location: productshome.php');
 						}
 						elseif (!validFname($_POST['fname_edit'])) {
@@ -155,7 +175,7 @@
 	          <span class="prefix">Browse</span>
 	        </div>
 	        <div class="small-8 columns">
-
+	        	<input name="image" accept="image/jpeg" type="file">
 	        </div>
 	      </div>
 	    </div>
