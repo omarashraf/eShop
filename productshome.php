@@ -128,7 +128,7 @@
       $array = products();
 
       $i = 0;
-      echo '<ul class="small-block-grid-3">';
+      echo '<ul class="small-block-grid-5">';
       while ($i < sizeof($array['name'])) {
         if ($_GET){
           if ($array['cat'][$i] == $_GET['cat']) {
