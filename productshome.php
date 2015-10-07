@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/foundation-icons.css">
+  <link rel="stylesheet" href="css/custom.css">
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/modernizr.js"></script>
@@ -14,7 +15,7 @@
 
   <title>Products</title>
 </head>
-<body>
+<body class="bg" style="background: url(img/blurred.jpg) no-repeat center center fixed;">
 
   <?php
     session_start();
@@ -71,7 +72,8 @@
 
 <!-- Left nav -->
   <!-- Categories -->
-  <div style="background: #f2f2f2;" class="small-3 columns">Categories
+  <div style="margin-left: 20px; height: 825px;" class="small-3 columns">
+    <h3 style="text-align: center; color: white;">Categories</h3>
     <?php
       //include('helper.php');
       $array = array(
@@ -81,17 +83,19 @@
       $array = categories();
 
       $i = 0;
-      echo '<ul><li><a href="productshome.php?cat=0">All</a></li>';
+      echo '<ul class="side-nav"><li><a href="productshome.php?cat=0">All</a></li>';
+      echo '<li class="divider"></li>';
 			while ($i < sizeof($array['name'])) {
 				echo "<li><a href=\"productshome.php?cat=" . $array['id'][$i] . "\">" . $array['name'][$i] . "</a></li>";
-				$i++;
+        echo '<li class="divider"></li>';
+        $i++;
 			}
       echo '</ul>';
     ?>
   </div>
 
 <!-- Right nav -->
-  <div style="margin-left: 40px;" class="small-8 columns" data-equalizer>
+  <div style="color: white; margin-left: 40px;" class="small-8 columns" data-equalizer>
 
   <!-- Search -->
     <!--<a href="#" style="border-radius: 25px;" class="button tiny success left inline">Search <i class="fi-magnifying-glass"></i></a>
@@ -161,7 +165,7 @@
   </div>
 
 <!-- Pagination -->
-  <div class="row">
+  <!-- <div class="row">
     <div class="pagination-centered">
       <ul class="pagination">
         <li class="arrow unavailable"><a href="">&laquo;</a></li>
@@ -175,7 +179,7 @@
         <li class="arrow"><a href="">&raquo;</a></li>
       </ul>
     </div>
-  </div>
+  </div> -->
 
   <script>
     $(document).foundation();

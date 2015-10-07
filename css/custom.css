@@ -1,0 +1,10 @@
+.bg {
+  -webkit-background-size: cover; /*Used by Safari &amp; Chrome*/
+  -moz-background-size: cover; /* Used by Firefox */
+  -o-background-size: cover; /* Used by Opera */
+  background-size: cover; /* All Modern Browsers */
+}
+
+.side-nav li a {
+  color: white;
+}

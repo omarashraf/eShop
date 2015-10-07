@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/custom.css">
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/modernizr.js"></script>
@@ -13,7 +14,7 @@
   <script src="typed.js-master/js/typed.js"></script>
 </head>
 
-<body>
+<body class="bg" style="color: white; background: url(img/blurred.jpg) no-repeat center center fixed;">
 
 	<?php
     session_start();
@@ -80,12 +81,14 @@
 
 <?php
 	//session_start();
-	if (isset($_SESSION['cart'])) {
+	if (!isset($_SESSION['cart'])) {
+		$_SESSION['cart'] = array();
+	}
 		$temp_arr = array();
 		$temp_arr = $_SESSION['cart'];
 		if (count($temp_arr) > 0) {
 			echo '<div class="row">
-				  	<h1 style="text-align: center;">My Cart</h1>
+				  	<h1 style="color: white; text-align: center;">My Cart</h1>
 				  	<div class="small-12 small-centered columns">
 				  		<table width="100%">
 				  			<thead>
@@ -105,10 +108,10 @@
 				if (mysql_num_rows($res) > 0) {
 					while($temp = mysql_fetch_assoc($res)) {
 						echo '<tr>
-					  				<th>' . $temp['pName'] . '</th>
-					  				<th>' . $temp['description'] . '</th>
-					  				<th>' . $temp['price'] . '</th>
-					  				<th><a href=\'removeFromCart.php?id=" . $i . "\'>Remove</a></th>
+					  				<td>' . $temp['pName'] . '</td>
+					  				<td>' . $temp['description'] . '</td>
+					  				<td>' . $temp['price'] . '</td>
+					  				<td><a href=\'removeFromCart.php?id=" . $i . "\'>Remove</a></td>
 					  			</tr>';
 						break;
 					}
@@ -130,7 +133,6 @@
 					});
 				</script>';
 		}
-	}
 
 ?>
 
@@ -146,13 +148,10 @@
 	$temp_arr = array();
 
 	if (!isset($_SESSION['cart'])) {
-
-	    $_SESSION['cart'] = array();
+	  $_SESSION['cart'] = array();
 	}
-	else {
-		$temp_arr = $_SESSION['cart'];
-	}	
 
+	$temp_arr = $_SESSION['cart'];
 
 	if (count($temp_arr) != 0) {
 		if (isset($_SESSION['loggedin']) && isset($_SESSION['loggedin_password'])) {

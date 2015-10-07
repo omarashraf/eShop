@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/foundation-icons.css">
+	<link rel="stylesheet" href="css/custom.css">
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/modernizr.js"></script>
@@ -13,7 +14,7 @@
   <script src="js/foundation.min.js"></script>
 </head>
 
-<body>
+<body class="bg" style="background: url(img/blurred.jpg) no-repeat center center fixed;">
 	<?php
     session_start();
 
@@ -86,7 +87,7 @@
 							"', email = '" . $_POST['email_edit'] . "' WHERE id = '" . $_SESSION['loggedin'] . "'";
 							mysql_query($update_editted_user);
 
-							if ($_FILES["image"]["error"] > 0) 
+							if ($_FILES["image"]["error"] > 0)
 						      {
 						         echo "<font size = '5'><font color=\"#e31919\">Error: NO CHOSEN FILE <br />";
 						         echo"<p><font size = '5'><font color=\"#e31919\">INSERT TO DATABASE FAILED";
@@ -136,9 +137,19 @@
 			</div>
 		</div>
 
-		<div style="text-align: center;"><img src="images/40249_430424968136_741658136_4924265_6442406_n.jpg" style="border-radius: 50%;
-			    width: 250; height: 245;"></div>
-		<br><br>
+		<?php
+			//include('helper.php');
+			$select_users_img_sql = "SELECT * FROM users WHERE id = '" . $_SESSION['loggedin'] . "'";
+			$res = mysql_query($select_users_img_sql);
+			if (mysql_num_rows($res)) {
+				while ($temp = mysql_fetch_assoc($res)) {
+					$image = $temp['avatar'];
+					break;
+				}
+			}
+		?>
+		<div style="text-align: center;"><img src="<?php echo $image; ?>" style="border-radius: 50%; width: 200px; height: 245px;"></div>
+		<br>
 
 		<div class="large-3 large-centered columns">
 	      <div class="row collapse prefix-radius">
@@ -176,7 +187,7 @@
 		<div class="large-3 large-centered columns">
 	      <div class="row collapse prefix-radius">
 	        <div class="small-4 columns">
-	          
+
 	        </div>
 	        <div class="small-8 columns" style="width: 100%;" style="text-align: center;">
 	        	<input name="image" accept="image/jpeg" type="file" class="button secondary" >

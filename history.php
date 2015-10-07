@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/font-awesome.css">
   <link rel="stylesheet" href="css/foundation-icons.css">
+  <link rel="stylesheet" href="css/custom.css">
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/modernizr.js"></script>
@@ -14,7 +15,7 @@
 
   <title>History</title>
 </head>
-<body>
+<body class="bg" style="color: white; background: url(img/blurred.jpg) no-repeat center center fixed;">
 
   <?php
     session_start();
@@ -68,7 +69,7 @@
     </div>
 
     <div class="row">
-      <h1>Products history</h1>
+      <h1 style="color: white;">Products history</h1>
       <div class="small-12 small-centered columns">
         <table style="width: 100%;">
           <thead>
